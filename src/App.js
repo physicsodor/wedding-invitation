@@ -1,8 +1,14 @@
 import React from "react";
 import Countdown from "react-countdown";
 import "./App.css";
-import weddingPhoto from "./wedding-photo.jpg";
-import { CopyToClipboard } from "react-copy-to-clipboard";
+import weddingPhoto from "./images/main.jpg";
+
+const copyToClipboard = (text) => {
+  navigator.clipboard
+    .writeText(text)
+    .then(() => alert("계좌번호가 복사되었습니다!"))
+    .catch((err) => console.error("복사 실패:", err));
+};
 
 const weddingDate = new Date("2025-06-01T14:00:00");
 
@@ -50,19 +56,11 @@ function App() {
         <h2>마음 전하는 곳</h2>
         <p>
           신랑측 계좌: <span>123-456-789</span>{" "}
-          <CopyToClipboard text="123-456-789">
-            <button onClick={() => alert("계좌번호가 복사되었습니다!")}>
-              복사
-            </button>
-          </CopyToClipboard>
+          <button onClick={() => copyToClipboard("123-456-789")}>복사</button>
         </p>
         <p>
           신부측 계좌: <span>987-654-321</span>{" "}
-          <CopyToClipboard text="987-654-321">
-            <button onClick={() => alert("계좌번호가 복사되었습니다!")}>
-              복사
-            </button>
-          </CopyToClipboard>
+          <button onClick={() => copyToClipboard("123-456-789")}>복사</button>
         </p>
       </div>
     </div>
