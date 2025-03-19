@@ -1,52 +1,174 @@
+@font-face {
+  font-family: "Maruburi";
+  src: url("/src/fonts/MaruBuri-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  font-family: "Maruburi", sans-serif;
+}
+
+h2 {
+  font-size: 1.5em;
+  margin: 0 auto 2em;
+}
+
 body {
-  font-family: "Arial", sans-serif;
+  font-family: "Maruburi", sans-serif;
   text-align: center;
   margin: 0;
   padding: 0;
-  background: #f9f9f9;
+  background: hsl(30, 30%, 90%);
 }
 
 .container {
   max-width: 500px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 0;
+  background-color: #f0f2e5;
 }
 
-.image-section {
+.img-box {
   position: relative;
   text-align: center;
 }
-
-.image-section img {
+.img-box img {
   width: 100%;
-  border-radius: 10px;
 }
-
-.overlay-text {
+.img-box .overlay-text {
   position: absolute;
-  top: 50%;
+  width: 100%;
+  top: 20%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: rgba(0, 0, 0, 0.5);
-  color: white;
-  padding: 10px 20px;
-  border-radius: 5px;
-  font-size: 24px;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+.img-box .out-text {
+  font-size: 1em;
+  font-weight: bold;
+  margin: 1em auto 4.5em;
+}
+.img-box .out-text p {
+  margin: 0.5em;
+}
+
+.hline {
+  width: 100%;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  border-top: 1pt solid hsl(0, 0%, 80%);
+}
+
+.invit-box {
+  margin: 5em auto 5em;
+}
+
+.invit-box .invit-letter {
+  margin: 0 auto 2em;
+}
+
+.invit-box .invit-name {
+  margin: 0 auto 1em;
+}
+
+.invit-box .invit-name div {
+  display: inline-block;
+}
+
+.invit-box .invit-name div:first-child {
+  font-size: 1.2em;
   font-weight: bold;
 }
 
-.countdown {
-  font-size: 20px;
-  margin: 20px 0;
+.invit-box .invit-name div:nth-child(2) {
+  margin: 0 0.5em;
+  font-size: 1em;
+}
+
+.invit-box .invit-name div:last-child {
+  font-size: 1.2em;
   font-weight: bold;
+}
+/* ------------- */
+
+.date-box {
+  margin: 5em auto 5em;
+}
+
+.date-box .countdown {
+  margin: -2em auto 2em;
+  padding: 0.5em 1em;
+  border-radius: 0.5em;
+  width: fit-content;
+  font-size: 1em;
+  font-weight: bold;
+  background-color: hsl(30, 30%, 70%);
+}
+
+.date-box .cal {
+  width: fit-content;
+  margin: auto;
+  padding: 0.5em 1em;
+  border-radius: 1em;
+  background-color: hsl(30, 30%, 90%);
+}
+
+.date-box .cal table {
+  border-collapse: collapse;
+}
+
+.date-box .cal td {
+  width: 3.5rem;
+  height: 2.5rem;
+}
+
+.date-box .cal thead td {
+  font-weight: bold;
+}
+
+.date-box .cal thead td.title {
+  font-size: 1.5em;
+  color: black;
+}
+
+.date-box .cal tbody {
+  border-top: 1pt solid hsl(0, 0%, 80%);
+}
+
+.date-box .cal td:first-child {
+  color: hsl(0, 50%, 50%);
+}
+
+.date-box .cal td:last-child {
+  color: hsl(30, 50%, 50%);
+}
+
+.date-box .cal .wedding-date {
+  width: 2em;
+  height: 2em;
+  border-radius: 1em;
+  font-size: 1.2em;
+  margin: auto;
+  /* font-weight: bold; */
+  background-color: hsl(30, 50%, 50%);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .info {
-  margin-top: 20px;
+  margin-top: 2em;
+  border-top: 1px solid rgb(191, 191, 191);
 }
 
-.info h2 {
+.info > h2 {
   margin-bottom: 5px;
+  text-decoration: hsl(30, 30%, 50%) 2px double underline;
+  text-underline-position: under;
 }
 
 .account {
@@ -58,53 +180,30 @@ body {
 }
 
 button {
-  background: #007bff;
+  background: hsl(30, 30%, 50%);
   color: white;
   border: none;
-  padding: 5px 10px;
+  margin: 5px;
+  padding: 5px;
   cursor: pointer;
   border-radius: 5px;
 }
 
 button:hover {
-  background: #0056b3;
+  background: hsl(00, 30%, 50%);
 }
 
-.App {
-  text-align: center;
+.accTable {
+  width: 100%;
+  border-collapse: collapse;
+  border-top: 3px double hsl(30, 30%, 50%);
+  border-bottom: 3px double hsl(30, 30%, 50%);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.accTable thead {
+  border-bottom: 1px solid hsl(30, 30%, 50%);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.accTable th {
+  white-space: nowrap;
 }
