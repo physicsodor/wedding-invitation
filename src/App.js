@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Countdown from "react-countdown";
 import "./App.css";
 import weddingPhoto from "./images/main.jpg";
@@ -104,11 +104,63 @@ const MyCal = () => {
   );
 };
 
-const CopyAccBttn = ({ num }) => {
+const accInfoList = [
+  ["신동진", "우리", "978-045427-02-101"],
+  ["최인아", "ㅁ", "000-000-000"],
+  ["신완기", "신한", "325-04-499446"],
+  ["김명재", "국민", "465125-91-106926"],
+  ["최삼태", "ㅁ", "000-000-000"],
+  ["이영욱", "ㅁ", "000-000-000"],
+];
+
+const AccList = () => {
+  const [accNum, setAccNum] = useState(-1);
+
+  let accBttnList = [];
+  let accInfo = [];
+  for (let i = 0; i < accInfoList.length; i++) {
+    accInfo = accInfoList[i];
+    accBttnList = [
+      ...accBttnList,
+      <button
+        key={`Acc-${i}`}
+        className={accNum === i ? "act" : ""}
+        onClick={() => {
+          if (i === accNum) {
+            setAccNum(-1);
+          } else {
+            setAccNum(i);
+          }
+        }}
+      >
+        {accInfo[0]}
+      </button>,
+    ];
+  }
   return (
-    <button onClick={() => copyToClipboard(num, "계좌번호가 복사되었습니다.")}>
-      복사하기
-    </button>
+    <div className="acc-list">
+      <div className="acc-bttn">{accBttnList}</div>
+      <div className="acc-info">
+        {accNum > -1 ? (
+          <>
+            <div className="bnk">{accInfoList[accNum][1]}</div>
+            <div className="num">{accInfoList[accNum][2]}</div>
+            <button
+              onClick={() =>
+                copyToClipboard(
+                  accInfoList[accNum][2],
+                  "계좌번호가 복사되었습니다."
+                )
+              }
+            >
+              복사
+            </button>
+          </>
+        ) : (
+          <div>이름을 선택하세요.</div>
+        )}
+      </div>
+    </div>
   );
 };
 
@@ -156,12 +208,13 @@ function App() {
         <MyCal />
       </div>
 
-      <div className="info">
-        <h2>오시는 길</h2>
+      <div className="hline" />
+
+      <div className="loca-box">
+        <h2> 서울대학교 연구공원 웨딩홀</h2>
+        <div className="loca-map">지도?</div>
         <div>
-          <div style={{ display: "inline-block" }}>
-            서울대학교 연구공원 웨딩홀
-          </div>
+          서울 관악구 관악로 1 연구공원 본관 1층
           <button
             onClick={() =>
               copyToClipboard(
@@ -170,7 +223,7 @@ function App() {
               )
             }
           >
-            주소 복사
+            복사
           </button>
         </div>
         <div>
@@ -186,47 +239,32 @@ function App() {
             네이버 지도에서 열기
           </button>
         </div>
+        <div>
+          <button
+            onClick={() => window.open("", "_blank", "noopener,noreferrer")}
+          >
+            다음 지도에서 열기?
+          </button>
+        </div>
+        <div>
+          <button
+            onClick={() => window.open("", "_blank", "noopener,noreferrer")}
+          >
+            T맵에서 열기
+          </button>
+        </div>
       </div>
 
-      <div className="info account">
+      <div className="hline" />
+
+      <div className="acc-box">
         <h2>마음 전하실 곳</h2>
-        <table className="accTable">
-          <thead>
-            <tr>
-              <th colSpan={2}>신랑측</th>
-              <th colSpan={2}>신부측</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th>신동진</th>
-              <td>
-                우리 978-045427-02-101
-                <CopyAccBttn num="978-045427-02-101" />
-              </td>
-              <th>최인아</th>
-              <td>
-                먀먀 000-000-0000
-                <CopyAccBttn num="000-000-0000" />
-              </td>
-            </tr>
-            <tr>
-              <td>신완기</td>
-              <td>신한 325-04-499446</td>
-              <td>최삼태</td>
-              <td>먀먀 000-000-0000</td>
-            </tr>
-            <tr>
-              <td>김명재</td>
-              <td>국민 465125-91-106926</td>
-              <td>이영욱</td>
-              <td>먀먀 000-000-0000</td>
-            </tr>
-          </tbody>
-        </table>
+        <AccList />
       </div>
 
-      <div className="info">
+      <div className="hline" />
+
+      <div className="gal-box">
         <h2>동진 &amp; 인아</h2>
         <p>사진 넣을 곳</p>
       </div>

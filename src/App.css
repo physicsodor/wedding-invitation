@@ -1,12 +1,15 @@
 @font-face {
-  font-family: "Maruburi";
-  src: url("/src/fonts/MaruBuri-Regular.ttf") format("truetype");
+  /* font-family: "Maruburi"; */
+  /* src: url("/src/fonts/MaruBuri-Regular.ttf") format("truetype"); */
+  font-family: "GowunBatang";
+  src: url("/src/fonts/GowunBatang-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 
 * {
-  font-family: "Maruburi", sans-serif;
+  /* font-family: "Maruburi", sans-serif; */
+  font-family: "GowunBatang", sans-serif;
 }
 
 h2 {
@@ -62,7 +65,11 @@ body {
   border-top: 1pt solid hsl(0, 0%, 80%);
 }
 
-.invit-box {
+.invit-box,
+.date-box,
+.loca-box,
+.acc-box,
+.gal-box {
   margin: 5em auto 5em;
 }
 
@@ -93,10 +100,6 @@ body {
   font-weight: bold;
 }
 /* ------------- */
-
-.date-box {
-  margin: 5em auto 5em;
-}
 
 .date-box .countdown {
   margin: -2em auto 2em;
@@ -160,23 +163,56 @@ body {
   justify-content: center;
 }
 
-.info {
-  margin-top: 2em;
-  border-top: 1px solid rgb(191, 191, 191);
+/* ------------------- */
+
+.loca-box .loca-map {
+  background-color: red;
 }
 
-.info > h2 {
-  margin-bottom: 5px;
-  text-decoration: hsl(30, 30%, 50%) 2px double underline;
-  text-underline-position: under;
+/* ------------ */
+
+.acc-box .acc-list {
+  width: 90%;
+  /* width: fit-content; */
+  margin: 0 auto;
 }
 
-.account {
-  margin-top: 20px;
+.acc-box .acc-bttn {
+  display: flex;
+  /* justify-content: center; */
+  justify-content: space-between;
+  align-items: flex-end;
 }
 
-.account h2 {
-  margin-bottom: 10px;
+.acc-box .acc-bttn Button {
+  width: 16.7%;
+  font-size: 1em;
+  margin: 0;
+  border-radius: 0;
+  border-top-right-radius: 0.5em;
+  border: 1px solid hsl(30, 30%, 75%);
+  background-color: hsl(30, 30%, 85%);
+  color: black;
+}
+.acc-box .acc-bttn Button.act {
+  background-color: hsl(30, 30%, 75%);
+  font-size: 1.2em;
+  margin-top: -0.2em;
+  font-weight: bold;
+}
+.acc-box .acc-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 3em;
+  background-color: hsl(30, 30%, 75%);
+}
+.acc-box .acc-info .bnk {
+  display: inline-block;
+  margin: 0 0.5em;
+}
+.acc-box .acc-info .num {
+  display: inline-block;
 }
 
 button {
@@ -191,19 +227,4 @@ button {
 
 button:hover {
   background: hsl(00, 30%, 50%);
-}
-
-.accTable {
-  width: 100%;
-  border-collapse: collapse;
-  border-top: 3px double hsl(30, 30%, 50%);
-  border-bottom: 3px double hsl(30, 30%, 50%);
-}
-
-.accTable thead {
-  border-bottom: 1px solid hsl(30, 30%, 50%);
-}
-
-.accTable th {
-  white-space: nowrap;
 }
